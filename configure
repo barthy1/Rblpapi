@@ -52,6 +52,10 @@ elif [ "${arch}" = "i686" ]; then
     echo "Setting up compilation for a ${platform} 32-bit system"
     sed -e"s/@config@/blpapi3_32/" -e"s|@rpath@|"${rpath}"|" src/Makevars.in > src/Makevars
     flavour="32"
+elif [ "${arch}" = "ppc64le" ]; then
+    echo "Setting up compilation for a ${platform} 64-bit system"
+    sed -e"s/@config@/blpapi3_64/" -e"s|@rpath@|"${rpath}"|" src/Makevars.in > src/Makevars
+    flavour="64"
 else
     echo "Unknown architecture: ${arch}. Exiting."
     exit -1
